@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "101334034777",
+    "firebase_url": "https://sunger-aapid1.firebaseio.com",
+    "project_id": "sunger-aapid1",
+    "storage_bucket": "sunger-aapid1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:101334034777:android:4435f8f07bfc937b",
+        "android_client_info": {
+          "package_name": "com.example.sunger.ml"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "101334034777-8sercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sunger.ml",
+            "certificate_hash": "01342b4be316b638c6bc87c3"
+          }
+        },
+        {
+          "client_id": "101334034777-6dmiu6nbleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAapeJQ_t4eCnJuC2Cm9y8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "101334034777-6dmiu6nb9gf5nm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

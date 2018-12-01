@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity implements DecodeResultListe
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        FastBarcode.getInstance().initialize(this);
         decoderManager = FastBarcode.getInstance().getDecoderManager();
         setContentView(R.layout.activity_main);
         soundManager = new SoundManager(this, R.raw.hsm_beep);
@@ -92,4 +91,7 @@ public class MainActivity extends AppCompatActivity implements DecodeResultListe
         textView.setText(stringBuffer.toString());
 
     }
+
+    public native void salt(long matAddrGray, int nbrElem);
+
 }

@@ -31,7 +31,7 @@ public class DecoderRunable implements Runnable {
         FutureTask<List<NativeBarcode>> futureTask = new FutureTask(new DecoderCallable(cameraSource,nativeBarcodeDetector));
         threadPoolExecutor.submit(futureTask);
         try {
-            List<NativeBarcode> nativeBarcodes = futureTask.get(timeout, TimeUnit.MILLISECONDS);
+            List<NativeBarcode> nativeBarcodes = futureTask.get();
             if (!nativeBarcodes.isEmpty()) {
                 decoderCallback.onResult(nativeBarcodes);
             }

@@ -9,6 +9,8 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
+import com.com.sungerk.barcode.DecodeResultListener;
+import com.com.sungerk.barcode.DecoderManager;
 import com.com.sungerk.barcode.FastBarcode;
 import com.com.sungerk.barcode.FastScannerView;
 import com.google.android.gms.vision.barcode.internal.NativeBarcode;
@@ -17,16 +19,18 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements FastScannerView.ResultHandler {
+public class MainActivity extends AppCompatActivity implements DecodeResultListener {
 
     private FastScannerView mScannerView;
     private TextView textView;
     private SoundManager soundManager;
+    private DecoderManager decoderManager;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FastBarcode.getInstance().initialize(this);
+        decoderManager = FastBarcode.getInstance().getDecoderManager();
         setContentView(R.layout.activity_main);
         soundManager = new SoundManager(this, R.raw.hsm_beep);
         mScannerView = findViewById(R.id.fireBaseBarcodeScannerView);
@@ -36,21 +40,6 @@ public class MainActivity extends AppCompatActivity implements FastScannerView.R
         }
     }
 
-    @Override
-    public void handleResult(List<NativeBarcode> rawResult) {
-        soundManager.play(0);
-        StringBuffer stringBuffer = new StringBuffer("扫描结果");
-        stringBuffer.append("\n");
-        stringBuffer.append("扫描时间:");
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        stringBuffer.append(df.format(new Date()));
-        for (NativeBarcode bar : rawResult) {
-            stringBuffer.append("\n");
-            stringBuffer.append("扫描结果:");
-            stringBuffer.append(bar.displayValue);
-        }
-        textView.setText(stringBuffer.toString());
-    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -62,10 +51,10 @@ public class MainActivity extends AppCompatActivity implements FastScannerView.R
 
 
     private void openScanner() {
-        mScannerView.setResultHandler(this);
         mScannerView.startCamera();
         mScannerView.setAutoFocus(true);
         mScannerView.setAspectTolerance(0.5f);
+        decoderManager.addResultListener(this);
     }
 
     @Override
@@ -78,11 +67,29 @@ public class MainActivity extends AppCompatActivity implements FastScannerView.R
     public void onPause() {
         super.onPause();
         mScannerView.stopCamera();
+        decoderManager.removeResultListener(this);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         soundManager.release();
+    }
+
+    @Override
+    public void onDecodeResult(List<NativeBarcode> result) {
+        soundManager.play(0);
+        StringBuffer stringBuffer = new StringBuffer("扫描结果");
+        stringBuffer.append("\n");
+        stringBuffer.append("扫描时间:");
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        stringBuffer.append(df.format(new Date()));
+        for (NativeBarcode bar : result) {
+            stringBuffer.append("\n");
+            stringBuffer.append("扫描结果:");
+            stringBuffer.append(bar.displayValue);
+        }
+        textView.setText(stringBuffer.toString());
+
     }
 }

@@ -21,9 +21,8 @@ public class NativeBarcodeDetector {
     }
 
 
-    public void decode(Bitmap bitmap) {
-        Object[] aaa = recognizeBitmapNative(bitmap, nativeOptions);
-        Log.d("sungerk", aaa.length + "");
+    public NativeBarcode[] decode(Bitmap bitmap) {
+        return recognizeBitmapNative(bitmap, nativeOptions);
     }
 
 

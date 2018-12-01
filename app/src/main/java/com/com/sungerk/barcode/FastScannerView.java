@@ -2,24 +2,27 @@ package com.com.sungerk.barcode;
 
 import android.content.Context;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Rect;
+import android.graphics.YuvImage;
 import android.hardware.Camera;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.AttributeSet;
+import android.util.Log;
 import com.google.android.gms.vision.barcode.internal.NativeBarcode;
 import com.google.android.gms.vision.barcode.internal.NativeBarcodeDetector;
 import com.google.android.gms.vision.barcode.internal.client.BarcodeDetectorOptions;
 import me.dm7.barcodescanner.core.BarcodeScannerView;
 import me.dm7.barcodescanner.core.DisplayUtils;
 
+import java.io.ByteArrayOutputStream;
 import java.util.Arrays;
 import java.util.List;
 
 public class FastScannerView extends BarcodeScannerView {
-    private NativeBarcodeDetector nativeBarcodeDetector;
-    private Handler handler;
-    private ResultHandler mResultHandler;
-
+    private DecoderManager decoderManager;
     private boolean isCameraOpen;
 
     public FastScannerView(Context context) {
@@ -33,15 +36,14 @@ public class FastScannerView extends BarcodeScannerView {
     }
 
     private void init() {
-        handler = new Handler(Looper.getMainLooper());
-        nativeBarcodeDetector = new NativeBarcodeDetector(new BarcodeDetectorOptions());
+        decoderManager = FastBarcode.getInstance().getDecoderManager();
     }
 
 
     @Override
     public void onPreviewFrame(byte[] data, final Camera camera) {
-        if (data == null || data.length == 0 || mResultHandler == null) {
-            resetOneShotPreviewCallback(camera);
+        resetOneShotPreviewCallback(camera);
+        if (data == null || data.length == 0) {
             return;
         }
         Camera.Parameters parameters = camera.getParameters();
@@ -57,24 +59,9 @@ public class FastScannerView extends BarcodeScannerView {
             }
             data = getRotatedData(data, camera);
         }
-        final NativeBarcode[] result = nativeBarcodeDetector.decode(width, height, data);
-        if (result == null || result.length == 0) {
-            resetOneShotPreviewCallback(camera);
-            return;
-        }
-        handler.post(new Runnable() {
-            @Override
-            public void run() {
-                mResultHandler.handleResult(Arrays.asList(result));
-                resetOneShotPreviewCallback(camera);
-            }
-        });
-
+        decoderManager.decode(width, height,parameters.getPreviewFormat() ,data);
     }
 
-    public void setResultHandler(ResultHandler resultHandler) {
-        mResultHandler = resultHandler;
-    }
 
     public void startCamera() {
         super.startCamera();
@@ -98,7 +85,5 @@ public class FastScannerView extends BarcodeScannerView {
 
     }
 
-    public interface ResultHandler {
-        void handleResult(List<NativeBarcode> rawResult);
-    }
+
 }

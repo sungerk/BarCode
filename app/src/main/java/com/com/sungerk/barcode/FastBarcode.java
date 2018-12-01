@@ -8,6 +8,7 @@ public final class FastBarcode {
     private static final String SO_FILE_NAME = "libbarhopper.so";
 
     private static volatile FastBarcode instance;
+    private DecoderManager decoderManager;
 
 
     public static FastBarcode getInstance() {
@@ -32,6 +33,13 @@ public final class FastBarcode {
     }
 
     private FastBarcode() {
+        decoderManager=new DecoderManager();
+    }
+
+
+    public DecoderManager getDecoderManager() {
+        return  decoderManager;
+
     }
 
 

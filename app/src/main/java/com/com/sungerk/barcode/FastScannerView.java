@@ -1,6 +1,7 @@
 package com.com.sungerk.barcode;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.hardware.Camera;
 import android.os.Handler;
 import android.os.Looper;
@@ -9,6 +10,7 @@ import com.google.android.gms.vision.barcode.internal.NativeBarcode;
 import com.google.android.gms.vision.barcode.internal.NativeBarcodeDetector;
 import com.google.android.gms.vision.barcode.internal.client.BarcodeDetectorOptions;
 import me.dm7.barcodescanner.core.BarcodeScannerView;
+import me.dm7.barcodescanner.core.DisplayUtils;
 
 import java.util.Arrays;
 import java.util.List;
@@ -46,6 +48,15 @@ public class FastScannerView extends BarcodeScannerView {
         Camera.Size size = parameters.getPreviewSize();
         int width = size.width;
         int height = size.height;
+        if (DisplayUtils.getScreenOrientation(getContext()) == Configuration.ORIENTATION_PORTRAIT) {
+            int rotationCount = getRotationCount();
+            if (rotationCount == 1 || rotationCount == 3) {
+                int tmp = width;
+                width = height;
+                height = tmp;
+            }
+            data = getRotatedData(data, camera);
+        }
         final NativeBarcode[] result = nativeBarcodeDetector.decode(width, height, data);
         if (result == null || result.length == 0) {
             resetOneShotPreviewCallback(camera);

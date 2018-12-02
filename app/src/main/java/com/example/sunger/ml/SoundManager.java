@@ -45,7 +45,7 @@ public class SoundManager {
      *
      * @param index 第几个
      */
-    public synchronized void play(int index) {
+    public   void play(int index) {
         int currentResId = sounddata.get(index);
         if (currentResId != 0) {
             soundPool.play(currentResId, 1, 1, 0, 0, 1);

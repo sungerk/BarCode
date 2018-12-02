@@ -18,13 +18,13 @@ public final class NativeBarcode {
     public int valueFormat;
     public WiFi wifi;
 
-    public final class Address {
+    public static final class Address {
         public String[] addressLines;
         public int type;
 
     }
 
-    public final class CalendarDateTime {
+    public static final class CalendarDateTime {
         public int day;
         public int hours;
         public boolean isUtc;
@@ -36,7 +36,7 @@ public final class NativeBarcode {
 
     }
 
-    public final class CalendarEvent {
+    public static final class CalendarEvent {
         public String description;
         public CalendarDateTime end;
         public String location;
@@ -46,7 +46,7 @@ public final class NativeBarcode {
         public String summary;
     }
 
-    public final class ContactInfo {
+    public static final class ContactInfo {
         public Address[] addresses;
         public Email[] emails;
         public PersonName name;
@@ -56,7 +56,7 @@ public final class NativeBarcode {
         public String[] urls;
     }
 
-    public final class DriverLicense {
+    public static final class DriverLicense {
         public String addressCity;
         public String addressState;
         public String addressStreet;
@@ -73,19 +73,19 @@ public final class NativeBarcode {
         public String middleName;
     }
 
-    public final class Email {
+    public static final class Email {
         public String address;
         public String body;
         public String subject;
         public int type;
     }
 
-    public final class GeoPoint {
+    public static final class GeoPoint {
         public double lat;
         public double lng;
     }
 
-    public final class PersonName {
+    public static final class PersonName {
         public String first;
         public String formattedName;
         public String last;
@@ -95,23 +95,23 @@ public final class NativeBarcode {
         public String suffix;
     }
 
-    public final class Phone {
+    public static final class Phone {
         public String number;
         public int type;
 
     }
 
-    public final class Sms {
+    public static final class Sms {
         public String message;
         public String phoneNumber;
     }
 
-    public final class UrlBookmark {
+    public static final class UrlBookmark {
         public String title;
         public String url;
     }
 
-    public final class WiFi {
+    public static final class WiFi {
         public int encryptionType;
         public String password;
         public String ssid;

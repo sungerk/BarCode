@@ -5,7 +5,7 @@ import android.content.Context;
 
 public final class FastBarcode {
 
-    private static final String SO_FILE_NAME = "libbarhopper.so";
+    private static final String SO_FILE_NAME = "libfastbar.so";
 
     private static volatile FastBarcode instance;
     private DecoderManager decoderManager;

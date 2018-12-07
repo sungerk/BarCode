@@ -9,9 +9,6 @@ Screenshots
 <img src="https://github.com/sungerk/BarCode/blob/dev/shortcuts/barcode.gif">
 
 
-
-`compile 'me.dm7.barcodescanner:zxing:1.9.8'`
-
 Simple Usage
 ------------
 
@@ -151,7 +148,7 @@ For HUAWEI mobile phone like P9, P10, when scanning using the default settings, 
 "preview size",  please adjust the parameter as below:
 
 ```java
-mScannerView = (ZXingScannerView) findViewById(R.id.zx_view);
+mScannerView = (FastScannerView) findViewById(R.id.fastScannerView);
 
 // this paramter will make your HUAWEI phone works great!
 mScannerView.setAspectTolerance(0.5f);

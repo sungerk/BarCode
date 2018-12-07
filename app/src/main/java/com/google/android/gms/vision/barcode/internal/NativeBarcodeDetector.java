@@ -1,8 +1,6 @@
 package com.google.android.gms.vision.barcode.internal;
 
 import android.graphics.Bitmap;
-import android.util.Log;
-import com.google.android.gms.vision.barcode.internal.client.BarcodeDetectorOptions;
 
 import java.nio.ByteBuffer;
 
@@ -16,8 +14,9 @@ public class NativeBarcodeDetector {
 
     static native NativeBarcode[] recognizeNative(int width, int height, byte[] bArr, NativeOptions nativeOptions);
 
-    public NativeBarcodeDetector(BarcodeDetectorOptions barcodeDetectorOptions) {
-        this.nativeOptions.barcodeFormats = barcodeDetectorOptions.f8194b;
+
+    public void setSupportFormats(int barcodeFormats) {
+        nativeOptions.barcodeFormats = barcodeFormats;
     }
 
 
@@ -27,12 +26,10 @@ public class NativeBarcodeDetector {
 
 
     public NativeBarcode[] decode(int width, int height, byte[] bArr) {
-        NativeBarcode[] aaa = recognizeNative(width, height, bArr, nativeOptions);
-        return aaa;
+        return recognizeNative(width, height, bArr, nativeOptions);
     }
 
-    public void decode(int width, int height, ByteBuffer byteBuffer) {
-        Object[] aaa = recognizeBufferNative(width, height, byteBuffer, nativeOptions);
-        Log.d("sungerk", aaa.length + "");
+    public NativeBarcode[] decode(int width, int height, ByteBuffer byteBuffer) {
+        return recognizeBufferNative(width, height, byteBuffer, nativeOptions);
     }
 }

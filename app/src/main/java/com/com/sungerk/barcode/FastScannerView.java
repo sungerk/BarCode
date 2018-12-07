@@ -2,21 +2,11 @@ package com.com.sungerk.barcode;
 
 import android.content.Context;
 import android.content.res.Configuration;
-import android.graphics.*;
 import android.hardware.Camera;
-import android.os.Handler;
-import android.os.Looper;
 import android.util.AttributeSet;
-import android.util.Log;
-import com.google.android.gms.vision.barcode.internal.NativeBarcode;
-import com.google.android.gms.vision.barcode.internal.NativeBarcodeDetector;
-import com.google.android.gms.vision.barcode.internal.client.BarcodeDetectorOptions;
 import me.dm7.barcodescanner.core.BarcodeScannerView;
-import me.dm7.barcodescanner.core.CameraUtils;
 import me.dm7.barcodescanner.core.DisplayUtils;
 
-import java.io.ByteArrayOutputStream;
-import java.util.Arrays;
 import java.util.List;
 
 public class FastScannerView extends BarcodeScannerView {
@@ -56,7 +46,7 @@ public class FastScannerView extends BarcodeScannerView {
                 width = height;
                 height = tmp;
             }
-            if (isCameraOpen){
+            if (isCameraOpen) {
                 data = getRotatedData(data, camera);
             }
         }
@@ -84,6 +74,10 @@ public class FastScannerView extends BarcodeScannerView {
             e.printStackTrace();
         }
 
+    }
+
+    public void setFormats(List<Integer> formats) {
+        decoderManager.setFormats(formats);
     }
 
 

@@ -1,6 +1,5 @@
 package com.com.sungerk.barcode;
 
-import android.graphics.Bitmap;
 import com.google.android.gms.vision.barcode.internal.NativeBarcode;
 import com.google.android.gms.vision.barcode.internal.NativeBarcodeDetector;
 

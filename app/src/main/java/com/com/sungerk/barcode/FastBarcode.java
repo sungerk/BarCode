@@ -39,7 +39,6 @@ public final class FastBarcode {
 
     public DecoderManager getDecoderManager() {
         return  decoderManager;
-
     }
 
 

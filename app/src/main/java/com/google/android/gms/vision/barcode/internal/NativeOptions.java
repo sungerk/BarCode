@@ -1,10 +1,10 @@
 package com.google.android.gms.vision.barcode.internal;
 
 
-import com.com.sungerk.barcode.Barcode;
+import com.com.sungerk.barcode.BarcodeFormat;
 
 class NativeOptions {
-    public int barcodeFormats = Barcode.CODE_128|Barcode.QR_CODE;
+    public int barcodeFormats = BarcodeFormat.ALL_FORMATS;
 
     NativeOptions() {
     }

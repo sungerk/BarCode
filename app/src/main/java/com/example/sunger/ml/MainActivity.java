@@ -11,13 +11,11 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.TextView;
-import com.com.sungerk.barcode.DecodeResultListener;
-import com.com.sungerk.barcode.DecoderManager;
-import com.com.sungerk.barcode.FastBarcode;
-import com.com.sungerk.barcode.FastScannerView;
+import com.com.sungerk.barcode.*;
 import com.google.android.gms.vision.barcode.internal.NativeBarcode;
 
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -36,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements DecodeResultListe
         setContentView(R.layout.activity_main);
         soundManager = new SoundManager(this, R.raw.hsm_beep);
         mScannerView = findViewById(R.id.fireBaseBarcodeScannerView);
+        mScannerView.setFormats(Arrays.asList(BarcodeFormat.CODE_39, BarcodeFormat.CODE_128,BarcodeFormat.QR_CODE));
         textView = findViewById(R.id.textView);
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 100);

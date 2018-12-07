@@ -1,6 +1,6 @@
 package com.com.sungerk.barcode;
 
-public class Barcode {
+public class BarcodeFormat {
     public static final int ALL_FORMATS = 0;
     public static final int CODE_128 = 1;
     public static final int CODE_39 = 2;

@@ -2,11 +2,11 @@ package com.com.sungerk.barcode;
 
 import com.google.android.gms.vision.barcode.internal.NativeBarcode;
 import com.google.android.gms.vision.barcode.internal.NativeBarcodeDetector;
-import com.google.android.gms.vision.barcode.internal.client.BarcodeDetectorOptions;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.*;
+import java.util.concurrent.FutureTask;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 public class DecoderRunable implements Runnable {
     private static int timeout = 250;

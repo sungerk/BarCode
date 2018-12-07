@@ -4,11 +4,13 @@ import android.os.Handler;
 import android.os.Looper;
 import com.google.android.gms.vision.barcode.internal.NativeBarcode;
 import com.google.android.gms.vision.barcode.internal.NativeBarcodeDetector;
-import com.google.android.gms.vision.barcode.internal.client.BarcodeDetectorOptions;
 
 import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.*;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.SynchronousQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 public final class DecoderManager implements DecoderCallback {
     private ThreadPoolExecutor threadPoolExecutor;
@@ -16,13 +18,24 @@ public final class DecoderManager implements DecoderCallback {
     private NativeBarcodeDetector nativeBarcodeDetector;
 
 
-
     protected DecoderManager() {
         threadPoolExecutor = new ThreadPoolExecutor(0, Integer.MAX_VALUE,
                 60L, TimeUnit.SECONDS,
                 new SynchronousQueue<Runnable>());
         handler = new Handler(Looper.getMainLooper());
-        nativeBarcodeDetector = new NativeBarcodeDetector(new BarcodeDetectorOptions());
+        nativeBarcodeDetector = new NativeBarcodeDetector();
+    }
+
+    public void setFormats(List<Integer> formats) {
+        //位或运算
+        if (formats == null || formats.isEmpty()) {
+            return;
+        }
+        int barcodeFormats = formats.get(0);
+        for (int i = 0; i < formats.size()-1; i++) {
+            barcodeFormats = barcodeFormats | formats.get(i+1);
+        }
+        nativeBarcodeDetector.setSupportFormats(barcodeFormats);
     }
 
     private List<DecodeResultListener> decodeResultListeners = new CopyOnWriteArrayList<>();
@@ -51,9 +64,9 @@ public final class DecoderManager implements DecoderCallback {
     }
 
 
-    public final void decode(int width, int height, int format,byte[] data) {
-        CameraSource cameraSource=new CameraSource(width, height, format,data);
-        DecoderRunable decoderRunable = new DecoderRunable(nativeBarcodeDetector, cameraSource, this,threadPoolExecutor);
+    public final void decode(int width, int height, int format, byte[] data) {
+        CameraSource cameraSource = new CameraSource(width, height, format, data);
+        DecoderRunable decoderRunable = new DecoderRunable(nativeBarcodeDetector, cameraSource, this, threadPoolExecutor);
         threadPoolExecutor.execute(decoderRunable);
     }
 

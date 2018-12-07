@@ -1,9 +1,10 @@
 package com.google.android.gms.vision.barcode.internal;
 
 import android.graphics.Bitmap;
+import android.support.annotation.Keep;
 
 import java.nio.ByteBuffer;
-
+@Keep
 public class NativeBarcodeDetector {
 
     private NativeOptions nativeOptions = new NativeOptions();

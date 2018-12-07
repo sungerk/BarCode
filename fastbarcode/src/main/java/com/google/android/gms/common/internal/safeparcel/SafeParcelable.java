@@ -6,7 +6,9 @@
 package com.google.android.gms.common.internal.safeparcel;
 
 import android.os.Parcelable;
+import android.support.annotation.Keep;
 
+@Keep
 public interface SafeParcelable extends Parcelable {
     String NULL = "SAFE_PARCELABLE_NULL_STRING";
 

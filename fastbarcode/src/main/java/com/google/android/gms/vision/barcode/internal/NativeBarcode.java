@@ -1,7 +1,9 @@
 package com.google.android.gms.vision.barcode.internal;
 
 import android.graphics.Point;
+import android.support.annotation.Keep;
 
+@Keep
 public final class NativeBarcode {
     public CalendarEvent calendarEvent;
     public ContactInfo contactInfo;
@@ -17,13 +19,13 @@ public final class NativeBarcode {
     public UrlBookmark url;
     public int valueFormat;
     public WiFi wifi;
-
+    @Keep
     public static final class Address {
         public String[] addressLines;
         public int type;
 
     }
-
+    @Keep
     public static final class CalendarDateTime {
         public int day;
         public int hours;
@@ -35,7 +37,7 @@ public final class NativeBarcode {
         public int year;
 
     }
-
+    @Keep
     public static final class CalendarEvent {
         public String description;
         public CalendarDateTime end;
@@ -45,7 +47,7 @@ public final class NativeBarcode {
         public String status;
         public String summary;
     }
-
+    @Keep
     public static final class ContactInfo {
         public Address[] addresses;
         public Email[] emails;
@@ -55,7 +57,7 @@ public final class NativeBarcode {
         public String title;
         public String[] urls;
     }
-
+    @Keep
     public static final class DriverLicense {
         public String addressCity;
         public String addressState;
@@ -72,19 +74,19 @@ public final class NativeBarcode {
         public String licenseNumber;
         public String middleName;
     }
-
+    @Keep
     public static final class Email {
         public String address;
         public String body;
         public String subject;
         public int type;
     }
-
+    @Keep
     public static final class GeoPoint {
         public double lat;
         public double lng;
     }
-
+    @Keep
     public static final class PersonName {
         public String first;
         public String formattedName;
@@ -94,23 +96,23 @@ public final class NativeBarcode {
         public String pronunciation;
         public String suffix;
     }
-
+    @Keep
     public static final class Phone {
         public String number;
         public int type;
 
     }
-
+    @Keep
     public static final class Sms {
         public String message;
         public String phoneNumber;
     }
-
+    @Keep
     public static final class UrlBookmark {
         public String title;
         public String url;
     }
-
+    @Keep
     public static final class WiFi {
         public int encryptionType;
         public String password;

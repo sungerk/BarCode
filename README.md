@@ -1,7 +1,8 @@
 Introduction
 ============
 
-Android library projects that provides easy to use and extensible Barcode Scanner views based on ZXing and ZBar.
+Android library projects that provides fast scan barcode
+Decompile by Google Service visio.
 
 Screenshots
 ===========

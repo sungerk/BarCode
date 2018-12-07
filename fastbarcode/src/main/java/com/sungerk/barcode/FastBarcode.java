@@ -1,4 +1,4 @@
-package com.com.sungerk.barcode;
+package com.sungerk.barcode;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -25,7 +25,7 @@ public final class FastBarcode {
     @SuppressLint("UnsafeDynamicallyLoadedCode")
     public void initialize(Context context) {
         try {
-            String fastScanSoFilePath = MyUtils.findNativeLibraryPath(context, SO_FILE_NAME);
+            String fastScanSoFilePath = Utils.findNativeLibraryPath(context, SO_FILE_NAME);
             System.load(fastScanSoFilePath);
         } catch (Exception e) {
             e.printStackTrace();

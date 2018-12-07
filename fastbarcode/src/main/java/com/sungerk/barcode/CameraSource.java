@@ -1,4 +1,4 @@
-package com.com.sungerk.barcode;
+package com.sungerk.barcode;
 
 public class CameraSource {
     public int width;

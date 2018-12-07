@@ -2,17 +2,15 @@ package com.example.sunger.ml;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.TextView;
-import com.com.sungerk.barcode.*;
 import com.google.android.gms.vision.barcode.internal.NativeBarcode;
+import com.sungerk.barcode.*;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -33,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements DecodeResultListe
         decoderManager = FastBarcode.getInstance().getDecoderManager();
         setContentView(R.layout.activity_main);
         soundManager = new SoundManager(this, R.raw.hsm_beep);
-        mScannerView = findViewById(R.id.fireBaseBarcodeScannerView);
+        mScannerView = findViewById(R.id.fastScannerView);
         mScannerView.setFormats(Arrays.asList(BarcodeFormat.CODE_39, BarcodeFormat.CODE_128,BarcodeFormat.QR_CODE));
         textView = findViewById(R.id.textView);
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {

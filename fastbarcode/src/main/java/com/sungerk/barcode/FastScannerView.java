@@ -1,4 +1,4 @@
-package com.com.sungerk.barcode;
+package com.sungerk.barcode;
 
 import android.content.Context;
 import android.content.res.Configuration;

@@ -1,4 +1,4 @@
-package com.com.sungerk.barcode;
+package com.sungerk.barcode;
 
 public class BarcodeFormat {
     public static final int ALL_FORMATS = 0;

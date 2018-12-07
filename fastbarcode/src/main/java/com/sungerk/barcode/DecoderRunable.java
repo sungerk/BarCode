@@ -1,4 +1,4 @@
-package com.com.sungerk.barcode;
+package com.sungerk.barcode;
 
 import com.google.android.gms.vision.barcode.internal.NativeBarcode;
 import com.google.android.gms.vision.barcode.internal.NativeBarcodeDetector;

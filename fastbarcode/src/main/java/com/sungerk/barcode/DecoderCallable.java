@@ -1,4 +1,4 @@
-package com.com.sungerk.barcode;
+package com.sungerk.barcode;
 
 import com.google.android.gms.vision.barcode.internal.NativeBarcode;
 import com.google.android.gms.vision.barcode.internal.NativeBarcodeDetector;
@@ -30,7 +30,7 @@ public final class DecoderCallable implements Callable<List<NativeBarcode>> {
         try {
 
             NativeBarcode[] result = nativeBarcodeDetector.decode(cameraSource.width, cameraSource.height, cameraSource.data);
-            if (MyUtils.isNotNull(result)) {
+            if (Utils.isNotNull(result)) {
                 return Arrays.asList(result);
             }
 

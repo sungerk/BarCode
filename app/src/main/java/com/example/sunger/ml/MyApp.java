@@ -1,8 +1,7 @@
 package com.example.sunger.ml;
 
 import android.app.Application;
-import android.util.Log;
-import com.com.sungerk.barcode.FastBarcode;
+import com.sungerk.barcode.FastBarcode;
 
 public class MyApp extends Application {
 
@@ -12,7 +11,6 @@ public class MyApp extends Application {
         FastBarcode.getInstance().initialize(this);
 
     }
-
 
 
 }

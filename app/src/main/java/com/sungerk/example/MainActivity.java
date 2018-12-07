@@ -80,15 +80,14 @@ public class MainActivity extends AppCompatActivity implements DecodeResultListe
     @Override
     public void onDecodeResult(List<NativeBarcode> result) {
         soundManager.play(0);
-        StringBuffer stringBuffer = new StringBuffer("扫描结果");
-        stringBuffer.append("\n");
-        stringBuffer.append("扫描时间:");
+        StringBuffer stringBuffer = new StringBuffer();
+         stringBuffer.append("Scan Time:");
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         stringBuffer.append(df.format(new Date()));
         for (NativeBarcode bar : result) {
             stringBuffer.append("\n");
-            stringBuffer.append("扫描结果:");
-            stringBuffer.append(bar.displayValue);
+            stringBuffer.append("Result:\n");
+            stringBuffer.append("     "+bar.displayValue);
         }
         textView.setText(stringBuffer.toString());
 

@@ -5,7 +5,7 @@ Android library projects that provides easy to use and extensible Barcode Scanne
 
 Screenshots
 ===========
-<img src="https://raw.github.com/dm77/barcodescanner/master/screenshots/main_activity.png" width="266">
+<img src="https://github.com/sungerk/BarCode/blob/dev/shortcuts/barcode.gif">
 
 
 

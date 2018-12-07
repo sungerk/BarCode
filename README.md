@@ -124,12 +124,8 @@ public class MainActivity extends AppCompatActivity implements DecodeResultListe
 
 ```
 
-Please take a look at the [zxing-sample](https://github.com/dm77/barcodescanner/tree/master/zxing-sample) project for a full working example.
+Please take a look at the [Demo](https://github.com/sungerk/BarCode/blob/dev/app/src/main/java/com/sungerk/example/MainActivity.java) project for a full working example.
 
-Advanced Usage
---------------
-
-Take a look at the [FullScannerActivity.java](https://github.com/dm77/barcodescanner/blob/master/zxing-sample/src/main/java/me/dm7/barcodescanner/zxing/sample/FullScannerActivity.java) or [FullScannerFragment.java](https://github.com/dm77/barcodescanner/blob/master/zxing-sample/src/main/java/me/dm7/barcodescanner/zxing/sample/FullScannerFragment.java) classes to get an idea on advanced usage.
 
 Interesting methods on the ZXingScannerView include:
 
@@ -163,20 +159,35 @@ mScannerView.setAspectTolerance(0.5f);
 Supported Formats:
 
 ```java
-BarcodeFormat.UPC_A
-BarcodeFormat.UPC_E
-BarcodeFormat.EAN_13
-BarcodeFormat.EAN_8
-BarcodeFormat.RSS_14
+BarcodeFormat.CODE_128
 BarcodeFormat.CODE_39
 BarcodeFormat.CODE_93
-BarcodeFormat.CODE_128
-BarcodeFormat.ITF
 BarcodeFormat.CODABAR
-BarcodeFormat.QR_CODE
 BarcodeFormat.DATA_MATRIX
-BarcodeFormat.PDF_417
+BarcodeFormat.EAN_13
+BarcodeFormat.EAN_8
+BarcodeFormat.ITF
+BarcodeFormat.QR_CODE
+BarcodeFormat.UPC_A
+BarcodeFormat.UPC_E
+BarcodeFormat.PDF417
+BarcodeFormat.AZTEC
+BarcodeFormat.CONTACT_INFO
+BarcodeFormat.EMAIL
+BarcodeFormat.ISBN
+BarcodeFormat.PHONE
+BarcodeFormat.PRODUCT
+BarcodeFormat.SMS
+BarcodeFormat.TEXT
+BarcodeFormat.GEO
+BarcodeFormat.TEXT
+BarcodeFormat.CALENDAR_EVENT
+BarcodeFormat.DRIVER_LICENSE
 ```
+
+Demo APK
+--------------
+Android APK can be downloaded [here](https://github.com/sungerk/BarCode/blob/dev/apk/app-release.apk).
 
 
 ### License

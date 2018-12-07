@@ -5,7 +5,7 @@
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
-            android:name=".MyApp"
+            android:name="com.sungerk.example.MyApp"
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
@@ -13,7 +13,7 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
 
-        <activity android:name=".MainActivity">
+        <activity android:name="com.sungerk.example.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

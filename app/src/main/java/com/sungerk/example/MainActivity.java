@@ -1,4 +1,4 @@
-package com.example.sunger.ml;
+package com.sungerk.example;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -9,6 +9,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
+import com.example.sunger.ml.R;
 import com.google.android.gms.vision.barcode.internal.NativeBarcode;
 import com.sungerk.barcode.*;
 
@@ -29,9 +30,9 @@ public class MainActivity extends AppCompatActivity implements DecodeResultListe
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         decoderManager = FastBarcode.getInstance().getDecoderManager();
-        setContentView(R.layout.activity_main);
-        soundManager = new SoundManager(this, R.raw.hsm_beep);
-        mScannerView = findViewById(R.id.fastScannerView);
+        setContentView(com.example.sunger.ml.R.layout.activity_main);
+        soundManager = new SoundManager(this, com.example.sunger.ml.R.raw.hsm_beep);
+        mScannerView = findViewById(com.example.sunger.ml.R.id.fastScannerView);
         mScannerView.setFormats(Arrays.asList(BarcodeFormat.CODE_39, BarcodeFormat.CODE_128,BarcodeFormat.QR_CODE));
         textView = findViewById(R.id.textView);
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {

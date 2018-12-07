@@ -1,4 +1,4 @@
-package com.example.sunger.ml;
+package com.sungerk.example;
 
 import android.app.Application;
 import com.sungerk.barcode.FastBarcode;

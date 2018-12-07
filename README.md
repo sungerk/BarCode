@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity implements DecodeResultListe
 Please take a look at the [Demo](https://github.com/sungerk/BarCode/blob/dev/app/src/main/java/com/sungerk/example/MainActivity.java) project for a full working example.
 
 
-Interesting methods on the ZXingScannerView include:
+Interesting methods on the FastScannerView include:
 
 ```java
 // Toggle flash:
